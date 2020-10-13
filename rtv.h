@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 19:31:57 by aapricot          #+#    #+#             */
-/*   Updated: 2020/10/09 18:08:13 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/10/13 19:33:02 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,11 @@ struct					s_ray
 struct					s_camera
 {
 	t_vec3				position;
-	t_vec3				rotate;
+	t_vec3				direction;
+	t_vec3				w;
+	t_vec3				u;
+	t_vec3				v;
+	t_vec3				up;
 	double				fov;
 	double				imageAspectRatio;
 };
@@ -141,5 +145,21 @@ struct					s_object
 };
 
 void		render(t_param *p, t_camera camera, t_object *scene);
+double		dot_product(t_vec3 a, t_vec3 b);
+t_vec3		sum(t_vec3 a, t_vec3 b);
+t_vec3		diff_num(t_vec3 a, t_vec3 b);
+t_vec3		mult_num(double num, t_vec3 b);
+t_vec3		vector_multi(t_vec3 a, t_vec3 b);
+t_vec3		normalize(t_vec3 direction);
+int			intersect(t_ray ray, t_object obj, double *t);
+t_vec3		vector_multi(t_vec3 a, t_vec3 b);
+t_vec3		mult_num(double num, t_vec3 b);
+t_vec3		diff_num(t_vec3 a, t_vec3 b);
+t_vec3		sum(t_vec3 a, t_vec3 b);
+double		dot_product(t_vec3 a, t_vec3 b);
+int			clamp(int x, int min, int max);
+void		compute_uwv(t_camera *camera);
+t_vec3		normalize(t_vec3 direction);
+double		light_lengh(t_vec3 a, t_vec3 b);
 
 #endif
