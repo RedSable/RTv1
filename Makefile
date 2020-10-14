@@ -1,7 +1,7 @@
 CC = gcc
 RM = rm -rf
 
-CFLAGS = -Wall -Wextra -Werror\
+CFLAGS = -Wall -Wextra -Werror -g\
 						-I.\
 						-I$(INCDIR)\
 						-I$(LIBFTINC)
@@ -18,8 +18,7 @@ LIBFTINC = $(LIBFTDIR)/includes
 
 INCDIR = ./include
 SRCSDIR = srcs/
-SRCS = draw.c get_color.c graphics.c key_event.c main.c matrix3.c read.c rotate_map.c\
-		rotation_matrix.c
+SRCS = intersect.c main.c operations.c parser.c render.c some_func.c
 OBJS = $(SRCS:.c=.o)
 TARGET = RTv1
 
@@ -45,7 +44,7 @@ clean:
 	@$(RM) $(OBJS)
 	@make -C $(LIBFTDIR) clean
 
-.PHIONY: fclean
+.PHONY: fclean
 fclean: clean
 	@echo deliting executable files
 	@$(RM) $(TARGET)
