@@ -6,7 +6,7 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/18 14:11:47 by aapricot          #+#    #+#             */
-/*   Updated: 2019/09/18 19:15:46 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/10/14 21:12:41 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_matfree(char **str, int i)
 {
-	while (--i)
+	while (--i >= 0)
 		free(str[i]);
 	free(str);
 	str = NULL;

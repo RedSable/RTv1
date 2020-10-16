@@ -1,0 +1,4 @@
+2
+camera	90	0.0,0.0,-1.0	0.0,0.0,1.0	none
+cylinder	0x0000FF	0.0,0.0,2.0	0.0,1.0,0.0	0.4
+light	none	4.0,10.0,-5.0	none	none

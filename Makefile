@@ -18,7 +18,8 @@ LIBFTINC = $(LIBFTDIR)/includes
 
 INCDIR = ./include
 SRCSDIR = srcs/
-SRCS = intersect.c main.c operations.c parser.c render.c some_func.c
+SRCS = intersect.c main.c operations.c parser.c render.c some_func.c render2_0.c \
+		parser_func.c get_obj_param.c
 OBJS = $(SRCS:.c=.o)
 TARGET = RTv1
 

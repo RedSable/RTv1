@@ -6,14 +6,14 @@
 /*   By: aapricot <aapricot@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/05 19:31:57 by aapricot          #+#    #+#             */
-/*   Updated: 2020/10/14 16:57:58 by aapricot         ###   ########.fr       */
+/*   Updated: 2020/10/15 17:53:45 by aapricot         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef RTV_H
 # define RTV_H
 # include "libft.h"
-#include <unistd.h>
+# include <unistd.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <fcntl.h>
@@ -100,13 +100,6 @@ struct					s_param
 	int					amount;
 };
 
-// struct					s_list
-// {
-// 	int					i;
-// 	t_target			target;
-// 	t_list				*next;
-// };
-
 struct					s_vec3
 {
 	double				x;
@@ -131,7 +124,7 @@ struct					s_camera
 	t_vec3				v;
 	t_vec3				up;
 	double				fov;
-	double				imageAspectRatio;
+	double				imageaspectratio;
 };
 
 struct					s_object
@@ -142,28 +135,43 @@ struct					s_object
 	int					color;
 	double				radius;
 	int					num;
+	int					amount;
 };
 
-void		render(t_param *p, t_camera camera, t_object *scene);
-double		dot_product(t_vec3 a, t_vec3 b);
-t_vec3		sum(t_vec3 a, t_vec3 b);
-t_vec3		diff_num(t_vec3 a, t_vec3 b);
-t_vec3		mult_num(double num, t_vec3 b);
-t_vec3		vector_multi(t_vec3 a, t_vec3 b);
-t_vec3		normalize(t_vec3 direction);
-int			intersect(t_ray ray, t_object obj, double *t);
-t_vec3		vector_multi(t_vec3 a, t_vec3 b);
-t_vec3		mult_num(double num, t_vec3 b);
-t_vec3		diff_num(t_vec3 a, t_vec3 b);
-t_vec3		sum(t_vec3 a, t_vec3 b);
-double		dot_product(t_vec3 a, t_vec3 b);
-int			clamp(int x, int min, int max);
-void		compute_uwv(t_camera *camera);
-t_vec3		normalize(t_vec3 direction);
-double		light_lengh(t_vec3 a, t_vec3 b);
-int				parser(t_object *scene, int fd, int amount);
-int				get_obj_direction(char *str, t_vec3 *direction);
-int				get_obj_origin(char *str, t_vec3 *origin);
-int			get_camera(char *str, t_camera *camera);
+void					render(t_param *p, t_camera camera, t_object *scene);
+double					dot_product(t_vec3 a, t_vec3 b);
+t_vec3					sum(t_vec3 a, t_vec3 b);
+t_vec3					diff_num(t_vec3 a, t_vec3 b);
+t_vec3					mult_num(double num, t_vec3 b);
+t_vec3					vector_multi(t_vec3 a, t_vec3 b);
+t_vec3					normalize(t_vec3 direction);
+int						intersect(t_ray ray, t_object obj, double *t);
+t_vec3					vector_multi(t_vec3 a, t_vec3 b);
+t_vec3					mult_num(double num, t_vec3 b);
+t_vec3					diff_num(t_vec3 a, t_vec3 b);
+t_vec3					sum(t_vec3 a, t_vec3 b);
+double					dot_product(t_vec3 a, t_vec3 b);
+int						clamp(int x, int min, int max);
+void					compute_uwv(t_camera *camera);
+t_vec3					normalize(t_vec3 direction);
+double					light_lengh(t_vec3 a, t_vec3 b);
+int						parser(t_object *scene, int fd, int amount);
+int						get_obj_direction(char *str, t_vec3 *direction);
+int						get_obj_origin(char *str, t_vec3 *origin);
+int						get_camera(char *str, t_camera *camera);
+int						get_color(double nl, double x, int color);
+t_ray					cast_camera_ray(t_camera camera, double x, double y);
+t_vec3					get_normal_at_hit(t_object obj, t_vec3 hit_point,
+								t_ray ray, double *t);
+t_vec3					gnah_sphere(t_vec3 hit_point, t_vec3 origin);
+double					get_double(char *str);
+int						ft_chartosix(char c);
+int						len_word(char *str);
+void					free_tab(char **tab);
+int						get_obj_type(char *str, int *type);
+int						get_obj_color(char *str, int *color);
+int						get_obj_origin(char *str, t_vec3 *origin);
+int						get_obj_direction(char *str, t_vec3 *direction);
+int						get_obj_radius(char *str, double *radius);
 
 #endif
